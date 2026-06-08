@@ -100,8 +100,53 @@ Exactly. `git add .` stages everything in the folder at once.
 Useful when you changed many files and want to include all of them. But be careful — it adds everything, including files you might not want to commit. That's why `.gitignore` matters later.
 
 
+---
 
+OK let's mess with some time manupulating skills
 
+Let,s you broke your file .
 
+You can rewind time and restore it to it's latest Version !!
 
+>How?
 
+Ez.. Use this first to check status
+
+```bash
+git status
+```
+
+```
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+        modified:   README.md
+
+no changes added to commit (use "git add" and/or "git commit -a")
+```
+
+This is our save command
+
+```bash
+git add README.md
+git commit -m "message"
+```
+You can do:
+```bash
+git commit -a -m "message"
+```
+
+And this is our Reload command
+
+```
+git restore README.md
+```
+
+Ehmm but here is the catch
+
+this only works if you haven't committed the mistake yet. If you already committed "i broke it lol" — git restore won't help. That's a different problem with a different fix.
+
+Ok lets try it..
+
+First i'll save this.. lol i can't embarce my self and deltete befre save.
+Worst thing OverWrite your saving file with wrong Version.
