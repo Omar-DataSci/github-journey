@@ -224,3 +224,63 @@ vim?
 press Escape then type :wq and hit Enter
 
 >Ok..
+
+```
+Author: Omar-DataSci <omarghedada@gmail.com>
+Date:   Mon Jun 8 05:58:30 2026 +0200
+
+    Revert "See?"
+    
+    This reverts commit 2c9fed296cd6d921832b03ff715c911a38af710b.
+```
+
+There it is. Read it carefully:
+
+* Git didn't delete the mistake
+* It created a new commit that undoes it
+* The history still shows everything — the mistake, and the fix
+
+That's the philosophy of `git revert`. It's honest. It says "I made a mistake, and I fixed it" — not "pretend it never happened."
+
+>Got it..lets do the second option now.
+
+Okay. First let's see where we are:
+```bash
+git log --oneline
+```
+The --oneline flag shows each commit in one line — cleaner. 
+
+
+```bash
+$ git log --oneline
+2c1aaaf (HEAD -> main) Revert "See?"
+2c9fed2 Broken Commit
+c630c8f temp commit
+7319005 Oh no~  i made a mistake!
+088f12b Za Waardo!
+b3b905c (origin/main) first commit: add README
+```
+
+See this.
+
+>-Nod-
+
+Let's say you want to go back to `Za Waardo!` — like everything after it never happened.
+The command is:
+
+```bash
+git reset --hard 088f12b
+```
+
+That `088f12b` is the short ID of the commit you want to go back to.\
+**Warning**: --hard means everything after that commit is gone.\
+No recovery. That's why it's dangerous.
+Run it and then git log --oneline again. 
+
+But let create anohter Save and go back to it.
+
+Probaply you wont remember it..
+
+>I will.
+
+Will See.
