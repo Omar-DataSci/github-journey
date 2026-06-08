@@ -284,3 +284,10 @@ Probaply you wont remember it..
 >I will.
 
 Will See.
+
+
+>how can i open the redme of other banch
+
+```bash
+git show parallel:README.md
+```
