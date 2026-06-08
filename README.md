@@ -291,3 +291,7 @@ Will See.
 ```bash
 git show parallel:README.md
 ```
+
+```bash
+git merge parallel
+```
