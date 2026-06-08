@@ -588,5 +588,5 @@ Ok now let's Push this into GitHub
 remember to stage the changes and commit.
 
 ```bash
-git push .
+git push 
 ```
