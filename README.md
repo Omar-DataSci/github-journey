@@ -224,5 +224,3 @@ vim?
 press Escape then type :wq and hit Enter
 
 >Ok..
-
-Hmmm i think i need to do it again
