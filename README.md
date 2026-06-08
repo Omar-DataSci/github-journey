@@ -136,24 +136,30 @@ You can do:
 git commit -a -m "message"
 ```
 
-question is this how we change the branch name from master to main git branch -M main
+>-Rise Hi hands-!..question is this how we change the branch name from master to main git branch -M main
 
-4:31 AM
 Exactly right.
 
-git branch -M main renames your current branch from master to main.
+`git branch -M main` renames your current branch from master to main.
 
-GitHub now uses main as the default name, but Git itself still creates master by default. So a lot of people run this to keep them consistent.
+GitHub now uses main as the default name, but Git itself still creates master by default. 
+So a lot of people run this to keep them consistent.
 
 You can do it now before we connect to GitHub:
 
-bash
+```bash
 git branch -M main
-Then git log again — you'll see HEAD -> main instead of HEAD -> master.
+```
+Then `git log` again — you'll see HEAD -> main instead of HEAD -> master.
 
 
 
-whats the diffrence in git@github.com:Omar-DataSci/github-journey.git and https://github.com/Omar-DataSci/github-journey.git
+Hmm I set the repo but.
+
+whats the diffrence in 
+git@github.com:Omar-DataSci/github-journey.git 
+and 
+https://github.com/Omar-DataSci/github-journey.git
 
 Good catch — GitHub gives you two options and it's worth understanding the difference.
 HTTPS (https://github.com/...)
@@ -162,7 +168,7 @@ Uses your GitHub username and password (or a token) to authenticate
 Easier to set up, works anywhere
 GitHub will ask for your credentials when you push
 
-SSH (git@github.com:...)
+`SSH (git@github.com:...)`
 
 Uses a special key pair — a private key on your machine, a public key on GitHub
 Once set up, you never type a password again
@@ -172,64 +178,115 @@ More secure, preferred by most developers
 For now, use HTTPS — it's simpler and you're on a new PC with nothing set up yet.
 Later when you're on your own machine, we can set up SSH properly and you'll never be asked for a password again.
 So run:
-bashgit remote add origin https://github.com/Omar-DataSci/github-journey.gitYou said: hmm i want to use ssh.hmm i want to use ssh..4:50 AMClaude responded: Good choice — let's set it up properly then.Good choice — let's set it up properly then.
+```bash
+git remote add origin https://github.com/Omar-DataSci/github-journey.gitYou 
+```
+>Emm NO..i want to use ssh.
+
+Good choice — let's set it up properly then.Good choice — let's set it up properly then.
+
 First, generate an SSH key on this PC:
-bashssh-keygen -t ed25519 -C "omarghedada@gmail.com"
+```bash
+ssh-keygen -t ed25519 -C "omarghedada@gmail.com"
+```
 It will ask you where to save it — just press Enter to accept the default location.
 Then it will ask for a passphrase — you can set one or just press Enter twice to skip it.
-Tell me when it's done.You said: explain each part firstexplain each part first4:52 AMClaude responded: Alright.Alright.
 
-ssh-keygen — the tool that generates the key pair
--t ed25519 — the type of encryption algorithm to use. Ed25519 is modern, fast, and secure. The old default was RSA — ed25519 is better.
--C "omarghedada@gmail.com" — just a label/comment attached to the key so you know which account it belongs to. Doesn't affect anything technically.
+ >Wait..explain me each part 
+ 
+ Sigh..Alright.Alright.
+
+* `ssh-keygen` — the tool that generates the key pair
+* `-t ed25519` — the type of encryption algorithm to use. Ed25519 is modern, fast, and secure. The old default was RSA — ed25519 is better.
+* `-C` "omarghedada@gmail.com" — just a label/comment attached to the key so you know which account it belongs to. Doesn't affect anything technically.
 
 The result will be two files:
 
-id_ed25519 — your private key. Never share this with anyone. Ever.
-id_ed25519.pub — your public key. This is what you give to GitHub.
+`id_ed25519` — your private key. Never share this with anyone. Ever.
+`id_ed25519.pub` — your public key. This is what you give to GitHub.
 
 Think of it like a lock and key. You give GitHub the lock (public key). You keep the key (private key). When you push, your machine proves it has the matching key — no password needed.
 Run it now:
-bashssh-keygen -t ed25519 -C "omarghedada@gmail.com"You said: where i find itwhere i find it4:57 AMClaude responded: Run this in Git Bash:Run this in Git Bash:
-bashcat ~/.ssh/id_ed25519.pub
+
+```bash
+ssh-keygen -t ed25519 -C "omarghedada@gmail.com"
+```
+
+>And where i find it?
+
+Run this in Git Bash:
+
+```bash
+cat ~/.ssh/id_ed25519.pub
+```
 It will print your public key. It looks something like:
-ssh-ed25519 AAAAC3Nza... omarghedada@gmail.com
-Copy the whole thing — from ssh-ed25519 all the way to your email at the end.
+`ssh-ed25519 AAAAC3Nza... omarghedada@gmail.com`
+
+Copy the whole thing — from `ssh-ed25519` all the way to your email at the end.
 Then go to GitHub → Settings → SSH and GPG keys → New SSH key → paste it there → save.
-Tell me when done.You said: donedone5:06 AMClaude responded: Now test the connection:Now test the connection:
-bashssh -T git@github.com
+
+Did you do it?..Ok..Now let's test the connection:
+
+```bash
+ssh -T git@github.com
+```
 It might ask you something like "are you sure you want to connect?" — type yes and press Enter.
-Tell me what it prints.You said: Warning: Permanently added 'github.Warning: Permanently added 'github.com' (ED25519) to the list of known hosts.
-Hi Omar-DataSci! You've successfully authenticated, but GitHub does not provide shell access.5:07 AMClaude responded: Perfect.Perfect. GitHub recognized you.
+
+>Like this?
+
+```bash
+Warning: Permanently added 'github.Warning: Permanently added 'github.com' (ED25519) to the list of known hosts.
+Hi Omar-DataSci! You've successfully authenticated, but GitHub does not provide shell access. 
+```
+Perfect.Perfect. GitHub recognized you.
+
 "but GitHub does not provide shell access" — that's normal, ignore it. It just means you can't control GitHub's servers directly, which you don't need to.
+
 Now add the remote using SSH this time:
-bashgit remote add origin git@github.com:Omar-DataSci/github-journey.git
+```bash
+git remote add origin git@github.com:Omar-DataSci/github-journey.git
+```
 Then verify:
-bashgit remote -v
-Tell me what you see.You said: why this git remote -vwhy this git remote -v5:09 AM2 / 2Claude responded: The -v means verbose — it tells Git "show me the details.The -v means verbose — it tells Git "show me the details."
+```bash
+git remote -v
+```
+>why this git remote -v 
+
+Ah.. The `-v` means verbose — it tells Git "show me the details.
+
 Without it, git remote just prints the name:
 origin
-With -v it prints the full address:
+
+With -`v` it prints the full address:
+```
 origin  git@github.com:Omar-DataSci/github-journey.git (fetch)
 origin  git@github.com:Omar-DataSci/github-journey.git (push)
+```
+
 You'll notice it shows two lines — one for fetch (pulling from GitHub) and one for push (pushing to GitHub). Usually they're the same address, but they can technically be different.
-So -v is just "show me everything, not just the name." Run it and tell me what you see.You said: origin  git@github.origin  git@github.com:Omar-DataSci/github-journey.git (fetch)
-origin  git@github.com:Omar-DataSci/github-journey.git (push)5:12 AMClaude responded: Perfect.Perfect. Git knows where GitHub is.
+
+Aha! So `-v` is just "show me everything, not just the name.
+
 Now let's send your snapshot up. This is the push:
-bashgit push -u origin main
+```bash
+git push -u origin main
+```
 The why:
 
-git push — send my commits to GitHub
-origin — send it to that address we just saved
-main — send the main branch
--u — this is a one time flag that links your local main to GitHub's main permanently. After this first time, you just type git push and Git knows where to send it.
+* `git push` — send my commits to GitHub
+* `origin` — send it to that address we just saved
+* `main` — send the main branch
+* `-u` — this is a one time flag that links your local main to GitHub's main permanently. After this first time, you just type git push and Git knows where to send it.
 
 Run it and tell me what you see.
 
+---
+
+Now We have evrything Set...
 
 And this is our Reload command
 
-```
+```bash
 git restore README.md
 ```
 
@@ -301,9 +358,10 @@ Then run git log and tell me what you see.
 Hmmm why did you go silent now.
 
 >..You said the V word...
+
 vim?
 
->Don't name it still give me nighmares
+>Don't name it still give me nightmares
 
 >hmm do i have to reopen vs code now.. Hello anyone here! How to quit THis Hell?
 
@@ -311,8 +369,8 @@ vim?
 
 >MOooM !!
 
-..Yikes.. you had it tuogh just 
-press Escape then type :wq and hit Enter
+..Yikes.. you had it tuogh..
+just press `Escape` then type `:wq` and hit `Enter`
 
 >Ok..
 
@@ -409,7 +467,7 @@ HEAD is now at 3a97f98 Save Point
 
 See Told You..You Won't remember..
 
-I don't blame you 
+Well..I don't blame you ..
 
 ```bash
 3a97f98 (HEAD -> main) Save Point
@@ -515,8 +573,20 @@ git commit -m "changes in parallel branch"
 
 ## Commands to run before making the situation worse
 
+Before you panic always check this..
+
 ```bash
 git status
 git log --oneline
 git reflog
+```
+
+Trust me it will save you.
+
+Ok now let's Push this into GitHub
+
+remember to stage the changes and commit.
+
+```bash
+git push .
 ```
