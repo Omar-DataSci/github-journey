@@ -376,7 +376,6 @@ Probaply you wont remember it..
 
 Will See.
 
-<<<<<<< HEAD
 
 >how can i open the redme of other banch
 
@@ -387,7 +386,7 @@ git show parallel:README.md
 ```bash
 git merge parallel
 ```
-=======
+
 ```bash
 fba348b (HEAD -> main) Will you remember?
 3a97f98 Save Point
@@ -500,10 +499,24 @@ $ git branch
 * parallel
 
 ```
-
+```bash
+git switch -c new-feature
 ```
+
+>because it creates and switches in one step.
+
+```bash
 git add .
 git commit -m "changes in parallel branch"
 
 ```
->>>>>>> parallel
+
+
+
+## Commands to run before making the situation worse
+
+```bash
+git status
+git log --oneline
+git reflog
+```
