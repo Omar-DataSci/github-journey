@@ -150,3 +150,9 @@ Ok lets try it..
 
 First i'll save this.. lol i can't embarce my self and deltete befre save.
 Worst thing OverWrite your saving file with wrong Version.
+
+See?? too bad you can't see it. you NPCs
+
+>OK but what if you break it while commiting.. How do you fix it
+
+Ah...good point let's see.
