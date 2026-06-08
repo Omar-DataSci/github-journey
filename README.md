@@ -156,3 +156,71 @@ See?? too bad you can't see it. you NPCs
 >OK but what if you break it while commiting.. How do you fix it
 
 Ah...good point let's see.
+
+```
+dell@DESKTOP-VEF2DCU MINGW64 ~/Desktop/GitHub Journey (main)
+$ git commit -m "Oh no~  i made a mistake!"
+[main 7319005] Oh no~  i made a mistake!
+ 1 file changed, 6 insertions(+)
+
+dell@DESKTOP-VEF2DCU MINGW64 ~/Desktop/GitHub Journey (main)
+$ git log
+commit 73190059bb95942c65770186d3515d820ff8d92a (HEAD -> main)
+Author: Omar-DataSci <omarghedada@gmail.com>
+Date:   Mon Jun 8 05:42:52 2026 +0200
+
+    Oh no~  i made a mistake!
+
+commit 088f12b9f291e4a35c2f15d9c25be427b7407fb4
+Author: Omar-DataSci <omarghedada@gmail.com>
+Date:   Mon Jun 8 05:38:38 2026 +0200
+
+    Za Waardo!
+
+commit b3b905c8fb53d547c3373bfc5abad2ff5fe654f5 (origin/main)
+Author: Omar-DataSci <omarghedada@gmail.com>
+Date:   Mon Jun 8 04:24:12 2026 +0200
+
+    first commit: add README
+
+```
+
+Now notice something:
+
+* origin/main is still on the first commit
+* HEAD -> main is on the mistake
+
+Meaning: the mistake is only local, not pushed to GitHub yet. That makes fixing it easier.
+
+Option 1 — `git revert` — the safe way
+Creates a new commit that undoes the mistake. History stays intact.
+Option 2 — `git reset` — the aggressive way
+Actually goes back in time and removes the commit from history. Like it never happened.
+
+>Let's start with the first option i want to keeep my memory this time.
+
+Good point.
+Run 
+```bash
+git revert HEAD
+```
+This will open a text editor asking you to write a message for the revert commit. Just save and close it (in Git Bash it'll open vim ).
+Then run git log and tell me what you see.
+
+Hmmm why did you go silent now.
+
+>..You said the V word...
+vim?
+
+>Don't name it still give me nighmares
+
+>hmm do i have to reopen vs code now.. Hello anyone here! How to quit THis Hell?
+
+>-Evil Vim-Quit? why quiting..you dont need to ..stay here lets have some fun -Start underssing-
+
+>MOooM !!
+
+..Yikes.. you had it tuogh just 
+press Escape then type :wq and hit Enter
+
+>Ok..
