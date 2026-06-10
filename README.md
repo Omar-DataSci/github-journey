@@ -590,3 +590,21 @@ remember to stage the changes and commit.
 ```bash
 git push 
 ```
+
+
+
+>how to pull a repo from GitHub
+```bash
+git clone https://github.com/username/repository-name.git
+```
+
+```bash
+git pull
+```
+```bash
+git checkout main
+```
+
+```bash
+git pull origin main
+```
